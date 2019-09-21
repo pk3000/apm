@@ -1,3 +1,14 @@
+.welcome-title{
+  padding: 20px;
+  background-color: rgb(20, 20, 37);
+  height: 1000px;
+  color:  white;
+}
+
 .nav-link {
   font-size: large;
+}
+
+h1{
+  color:rgb(155, 73, 231);
 }
