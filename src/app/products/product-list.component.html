@@ -5,11 +5,11 @@
     <div class='card-body'>
             <div class='row'>
                 <div class='col-md-2'>Filter by:</div>
-                <div class='col-md-4'><input type="text" [(ngModel)] = 'filter' /></div>
+                <div class='col-md-4'><input type="text" [(ngModel)] = 'listFilter' /></div>
             </div>
             <div class='row'>
                 <div class='col-md-6'>
-                  <h4>Filtered by: {{filter}}</h4>
+                  <h4>Filtered by: {{listFilter}}</h4>
                 </div>
             </div>
 
@@ -32,14 +32,17 @@
                     
                 </thead>
                 <tbody>
-                    <tr *ngFor='let prod of products' [style.line-height.px]='productImageWidth'>
+                    <tr *ngFor='let prod of filteredProducts' [style.line-height.px]='productImageWidth'>
                         <td>
                             <div *ngIf='showImageColumn'><img src={{prod.imageUrl}} title={{prod.productName}} [style.height.px]='productImageWidth' /> </div>
                         </td>
                         <td>{{prod.productName}}</td>
-                        <td>{{prod.productCode}}</td>
+                        <td>{{prod.productCode | replaceWithSpaces: '-'}}</td>
                         <td>{{prod.releaseDate}}</td>
-                        <td>{{prod.price | currency: 'CAD' : 'symbol' : '1.2-2' }}</td>
+                        <td>
+                            <div class='product-price-original'>{{prod.price | currency: 'CAD' : 'symbol' : '1.2-2' }}</div>
+                            <div class='product-price-discount'>*{{prod.calculateDiscount(50) | currency: 'CAD' : 'symbol' : '1.2-2' }}</div>
+                        </td>
                         <td>{{prod.starRating}}</td>
                     </tr>
                 </tbody>

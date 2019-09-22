@@ -1,0 +1,6 @@
+.product-price-original{
+    text-decoration: line-through;
+}
+.product-price-discount{
+    text-shadow: 1px 1px lightpink;
+}

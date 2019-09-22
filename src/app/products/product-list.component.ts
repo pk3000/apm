@@ -1,17 +1,69 @@
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Product } from './product';
 
 @Component({
     selector: 'pm-products',
-    templateUrl: './product-list.component.html'
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css'],
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
+    // The 'implements OnInit' part is not necessary to get this to work. It just allows IDE help
+
     pageTitle = 'The Best Product List';
-    filter = 'cart';
     showImageColumn = true;
-    productImageWidth: number = 50;
-    // any is a type when we don't know or care what the specific type is
-    products: any[] = [
+    productImageWidth = 50;
+
+    _listFilter: string;
+
+    get listFilter(): string{
+      return this._listFilter;
+    }
+    set listFilter(value){
+      this._listFilter = value;
+      this.filteredProducts = this.listFilter ? this.performFiler(this.listFilter) : this.products;
+    }
+
+    filteredProducts: Product[];
+    // 'any' is a type when we don't know or care what the specific type is
+    // products: any[] = [
+    products: Product[] = [
+      new Product(1, 'Leaf Rake', 'GDN-0011', 'March 19, 2020',
+        'Leaf rake with 48-inch wooden handle.', 19.95, 3.2, 'assets/images/leaf_rake.png'),
+      new Product(2, 'Garden Cart', 'GDN-0023', 'March 18, 2020',
+        '15 gallon capacity rolling garden cart', 32.99, 4.2, 'assets/images/garden_cart.png'),
+      new Product(5, 'Hammer', 'TBX-0048', 'May 21, 2020',
+        'Curved claw steel hammer', 8.9, 4.8, 'assets/images/hammer.png'),
+      new Product(8, 'Saw', 'TBX-0022', 'May 15, 2020',
+        '15-inch steel blade hand saw', 11.55, 3.7, 'assets/images/leaf_rake.png'),
+      new Product(10, 'Video Game Controller', 'GMG-0042', 'October 15, 2019',
+        'Standard two-button video game controller', 35.95, 4.4, 'assets/images/leaf_rake.png'),
+    ];
+
+    constructor(){
+      this.filteredProducts = this.products;
+      this.listFilter = 'cart';
+    }
+
+    ToggleImageColumn(): void {
+        this.showImageColumn = !this.showImageColumn;
+    }
+
+    ngOnInit(): void {
+      console.log('In product-list.component\'s ngOnIt method');
+    }
+
+    performFiler(filterBy: string): Product[] {
+      filterBy = filterBy.toLocaleLowerCase();
+      return this.products.filter((prod: Product) =>
+        prod.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+        // || prod.description.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    }
+}
+
+
+/*
+products: Product[] = [
         {
           productId: 1,
           productName: 'Leaf Rake',
@@ -63,8 +115,4 @@ export class ProductListComponent {
           imageUrl: 'assets/images/xbox-controller.png'
         }
       ];
-
-      ToggleImageColumn(): void {
-          this.showImageColumn = !this.showImageColumn;
-      }
-}
+*/
