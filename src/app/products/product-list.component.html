@@ -5,32 +5,43 @@
     <div class='card-body'>
             <div class='row'>
                 <div class='col-md-2'>Filter by:</div>
-                <div class='col-md-4'><input type="text" /></div>
+                <div class='col-md-4'><input type="text" [(ngModel)] = 'filter' /></div>
             </div>
             <div class='row'>
                 <div class='col-md-6'>
-                  <h4>Filtered by:</h4>
+                  <h4>Filtered by: {{filter}}</h4>
                 </div>
             </div>
 
         <div class="table-responsive">
-            <table class="table">
+            <table class="table"
+                    *ngIf='products && products.length'>
                 <thead>
                     <tr>
                         <th>
-                            <button class="btn btn-primary">
-                                Show Image
+                            <button class="btn btn-primary" (click)='ToggleImageColumn()'>
+                                {{showImageColumn ? 'Hide' : 'Show'}} Image
                             </button>
                         </th>
                         <th>Product</th>
                         <th>Code</th>
                         <th>Available</th>
                         <th>Price</th>
-                        <th>5 Star Rating</th>
+                        <th>5 Star Rating</th>                        
                     </tr>
+                    
                 </thead>
                 <tbody>
-
+                    <tr *ngFor='let prod of products' [style.line-height.px]='productImageWidth'>
+                        <td>
+                            <div *ngIf='showImageColumn'><img src={{prod.imageUrl}} title={{prod.productName}} [style.height.px]='productImageWidth' /> </div>
+                        </td>
+                        <td>{{prod.productName}}</td>
+                        <td>{{prod.productCode}}</td>
+                        <td>{{prod.releaseDate}}</td>
+                        <td>{{prod.price | currency: 'CAD' : 'symbol' : '1.2-2' }}</td>
+                        <td>{{prod.starRating}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

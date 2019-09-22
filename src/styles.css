@@ -1,5 +1,31 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css?family=Abel|Big+Shoulders+Text|Cabin|Comfortaa|Cuprum|Exo|Josefin+Sans|Mitr|Orbitron|Poiret+One|Prompt|Righteous|Yanone+Kaffeesatz&display=swap');
+
+h1 {
+  /* font-family: 'Prompt', sans-serif; */
+  font-family: 'Exo', cursive;
+}
+h2{
+  font-family: 'Poiret One', cursive;
+}
+h3 {
+  font-family: 'Cabin', sans-serif;
+}
+
+body {
+  font-family: 'Abel', sans-serif;
+  font-family: 'Comfortaa', cursive;
+
+  /* font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-family: 'Exo', sans-serif;
+  font-family: 'Big Shoulders Text', cursive;
+  font-family: 'Cuprum', sans-serif;
+  font-family: 'Orbitron', sans-serif;
+  font-family: 'Poiret One', cursive;
+  font-family: 'Mitr', sans-serif; */
+}
+
 
 /* You can add global styles to this file, and also import other style files */
 div.card-header {
@@ -10,6 +36,33 @@ div.card {
   margin-top: 10px
 }
 
+
+/* TABLE */
 .table {
   margin-top: 10px
+}
+
+
+.table thead tr{
+  font-size: 20px;
+  background-color:rgb(40, 40, 53);
+  color: rgb(244, 190, 255);
+}
+
+.table tbody tr{
+  font-size: 20px;
+  font-family: 'Cuprum', sans-serif;
+}
+
+
+/* INPUT */
+
+.btn-primary{
+  background-color: rgb(54, 38, 94);
+  border-color: #FFF;
+  color: #FFF;
+}
+.btn-primary:hover{
+  background-color: rgb(61, 49, 88);
+  border-color: rgb(247, 2, 255);
 }
