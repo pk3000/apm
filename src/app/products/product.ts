@@ -44,7 +44,13 @@ export class Product implements IProduct {
         return this.price - (this.price * (percent / 100));
     }
 
-    ChangeStartRating(): void {
-        this.starRating = (this.starRating + 0.5) % 5;
+    ChangeStartRating(starIndex: number): void {
+        if (starIndex) {
+            this.starRating = starIndex;
+        } else {
+            this.starRating = (this.starRating + 0.5) % 5;
+        }
     }
+
+
 }

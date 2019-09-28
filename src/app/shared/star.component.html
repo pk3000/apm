@@ -1,21 +1,21 @@
-<div (click)='onClickStar()'>
+<div>
   <div class="star-no-value" style="width: 100px;">
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
+      <span (click)='onClickStar(1)' class="fa fa-star"></span>
+      <span (click)='onClickStar(2)' class="fa fa-star"></span>
+      <span (click)='onClickStar(3)' class="fa fa-star"></span>
+      <span (click)='onClickStar(4)' class="fa fa-star"></span>
+      <span (click)='onClickStar(5)' class="fa fa-star"></span>
   </div>
   
   <div class="crop star-with-value" style="width: 100px;"
       [style.width.px]="starWidth"
       [title]="rating">
     <div style="width: 100px">
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
+      <span (click)='onClickStar(1)' class="fa fa-star"></span>
+      <span (click)='onClickStar(2)' class="fa fa-star"></span>
+      <span (click)='onClickStar(3)' class="fa fa-star"></span>
+      <span (click)='onClickStar(4)' class="fa fa-star"></span>
+      <span (click)='onClickStar(5)' class="fa fa-star"></span>
     </div>
   </div>
 </div>

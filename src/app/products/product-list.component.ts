@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
+import { StarClickPayload } from '../shared/starclickpayload';
 
 @Component({
     selector: 'pm-products',
@@ -60,8 +61,9 @@ export class ProductListComponent implements OnInit {
         // || prod.description.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
 
-    onNotifyStarEvent(eventPayload: number): void {
-      this.products.find(x => x.productId === eventPayload).ChangeStartRating();
+    onNotifyStarEvent(eventPayload: StarClickPayload): void {
+      console.log(eventPayload.message + ': ' + eventPayload.starClickedNumber);
+      this.products.find(x => x.productId === eventPayload.productId).ChangeStartRating(eventPayload.starClickedNumber);
     }
 }
 

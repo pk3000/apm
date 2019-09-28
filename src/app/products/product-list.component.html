@@ -44,7 +44,7 @@
                             <div class='product-price-discount'>*{{prod.calculateDiscount(50) | currency: 'CAD' : 'symbol' : '1.2-2' }}</div>
                         </td>
                         <td>
-                            <pm-star    [rating]='prod.starRating'
+                            {{prod.starRating}}<pm-star    [rating]='prod.starRating'
                                         [productId]='prod.productId'
                                         (notify)='onNotifyStarEvent($event)'>
 
