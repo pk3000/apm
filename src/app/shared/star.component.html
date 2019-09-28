@@ -1,11 +1,21 @@
-<div class="crop"
-     [style.width.px]="starWidth"
-     [title]="rating">
-  <div style="width: 75px">
+<div (click)='onClickStar()'>
+  <div class="star-no-value" style="width: 100px;">
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
+  </div>
+  
+  <div class="crop star-with-value" style="width: 100px;"
+      [style.width.px]="starWidth"
+      [title]="rating">
+    <div style="width: 100px">
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+    </div>
   </div>
 </div>

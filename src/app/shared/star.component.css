@@ -4,3 +4,14 @@
 div {
   cursor: pointer;
 }
+
+.star-with-value {
+  color: deeppink;
+  position: relative;
+}
+
+
+.star-no-value {
+  color: rgb(6, 6, 46);
+  position: absolute;
+}

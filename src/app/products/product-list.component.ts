@@ -35,14 +35,14 @@ export class ProductListComponent implements OnInit {
       new Product(5, 'Hammer', 'TBX-0048', 'May 21, 2020',
         'Curved claw steel hammer', 8.9, 4.8, 'assets/images/hammer.png'),
       new Product(8, 'Saw', 'TBX-0022', 'May 15, 2020',
-        '15-inch steel blade hand saw', 11.55, 3.7, 'assets/images/leaf_rake.png'),
+        '15-inch steel blade hand saw', 11.55, 1.2, 'assets/images/saw.png'),
       new Product(10, 'Video Game Controller', 'GMG-0042', 'October 15, 2019',
-        'Standard two-button video game controller', 35.95, 4.4, 'assets/images/leaf_rake.png'),
+        'Standard two-button video game controller', 35.95, 4.4, 'assets/images/xbox-controller.png'),
     ];
 
     constructor(){
       this.filteredProducts = this.products;
-      this.listFilter = 'cart';
+      this.listFilter = '';
     }
 
     ToggleImageColumn(): void {
@@ -59,13 +59,17 @@ export class ProductListComponent implements OnInit {
         prod.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
         // || prod.description.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
+
+    onNotifyStarEvent(eventPayload: number): void {
+      this.products.find(x => x.productId === eventPayload).ChangeStartRating();
+    }
 }
 
 
 /*
 products: Product[] = [
         {
-          productId: 1,
+          plistFilterroductId: 1,
           productName: 'Leaf Rake',
           productCode: 'GDN-0011',
           releaseDate: 'March 19, 2019',
@@ -94,6 +98,9 @@ products: Product[] = [
           starRating: 4.8,
           imageUrl: 'assets/images/hammer.png'
         },
+<div class="crop"
+     [style.width.px]="starWidth"
+     [title]="rating">
         {
           productId: 8,
           productName: 'Saw',
